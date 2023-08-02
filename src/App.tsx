@@ -1,5 +1,12 @@
+import Routes from "./routes";
+import AuthState from "./state/auth/state";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <AuthState>
+      <Routes />
+    </AuthState>
+  );
 }
 
 export default App;

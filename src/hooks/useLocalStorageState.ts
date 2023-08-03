@@ -8,14 +8,14 @@ import {
 
 export const useLocalStorageState = <T>(
   key: string,
-  initialState: T
-): [T, Dispatch<SetStateAction<T>>] => {
+  initialState?: T
+): [T | undefined, Dispatch<SetStateAction<T>>] => {
   const [state, setter] = useState(initialState);
 
   useEffect(() => {
     // hydrate
     const storageValue = window.localStorage.getItem(key);
-    if (storageValue) {
+    if (storageValue && storageValue !== "undefined") {
       setter(JSON.parse(storageValue));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

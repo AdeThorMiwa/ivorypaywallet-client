@@ -10,23 +10,20 @@ import { useLocalStorageState } from "../../hooks/useLocalStorageState";
 
 interface AuthContextProps {
   authenticated: boolean;
-  setAuthenticated: Dispatch<SetStateAction<boolean>>;
+  authenticate: Dispatch<SetStateAction<string>>;
 }
 
 export const AuthContext = createContext<AuthContextProps | null>(null);
 
 const AuthState: FC<PropsWithChildren> = ({ children }) => {
-  const [authenticated, setAuthenticated] = useLocalStorageState(
-    "auth.authenticated",
-    false
-  );
+  const [authToken, authenticate] = useLocalStorageState<string>("auth.token");
 
   const values: AuthContextProps = useMemo(
     () => ({
-      authenticated,
-      setAuthenticated,
+      authenticated: !!authToken,
+      authenticate,
     }),
-    [authenticated, setAuthenticated]
+    [authToken, authenticate]
   );
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

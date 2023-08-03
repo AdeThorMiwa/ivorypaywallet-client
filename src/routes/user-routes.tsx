@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import { ErrorPage, InvitePage, UserDasboardPage } from "../pages";
+import { ErrorPage, LoginPage, RegisterPage, UserDasboardPage } from "../pages";
 import UserLayout from "../layouts/user";
 import AuthLayout from "../layouts/auth";
 
@@ -20,8 +20,12 @@ export const UserRoutes: RouteObject[] = [
     element: <AuthLayout />,
     children: [
       {
-        path: "invite",
-        element: <InvitePage />,
+        index: true,
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
       },
     ],
     errorElement: <ErrorPage />,

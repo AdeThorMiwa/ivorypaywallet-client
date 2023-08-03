@@ -7,6 +7,7 @@ type RouteError = {
 
 export default function ErrorPage() {
   const error = useRouteError() as RouteError;
+  console.log(error);
 
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">

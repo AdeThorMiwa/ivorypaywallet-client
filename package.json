@@ -10,11 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "classname": "^0.0.0",
+    "classnames": "^2.3.2",
+    "formik": "^2.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2"
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.14.2",
+    "yup": "^1.2.0",
+    "yup-password": "^0.2.2"
   },
   "devDependencies": {
+    "@types/classnames": "^2.3.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

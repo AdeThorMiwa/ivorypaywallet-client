@@ -6,14 +6,7 @@ const UserLayout = () => {
 
   if (!authenticated) return <Navigate to="/auth" />;
 
-  return (
-    <>
-      <header>THis is Main</header>
-      <main>
-        <Outlet />
-      </main>
-    </>
-  );
+  return <Outlet />;
 };
 
 export default UserLayout;

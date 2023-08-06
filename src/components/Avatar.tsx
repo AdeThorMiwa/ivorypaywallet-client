@@ -1,7 +1,19 @@
-const Avatar = () => {
+import { FC } from "react";
+import cn from "classnames";
+
+interface AvatarProps {
+  flexDirection?: "flex-col" | "flex-row";
+}
+
+const Avatar: FC<AvatarProps> = ({ flexDirection = "flex-col" }) => {
   return (
-    <button className={`flex flex-col items-center gap-x-4 w-fit max-w-[64px]`}>
-      <span className="h-[64px] w-[64px] block rounded-full overflow-hidden border border-[#270685] p-[2px]">
+    <button
+      className={cn(
+        "flex items-center gap-x-4 w-fit max-w-[54px]",
+        flexDirection
+      )}
+    >
+      <span className="min-h-[54px] min-w-[54px] block rounded-full overflow-hidden border border-[#270685] p-[2px]">
         <img
           src="https://api.dicebear.com/6.x/thumbs/svg?seed=Bandit&flip=true&radius=50"
           alt=""

@@ -1,10 +1,11 @@
 import { useMemo } from "react";
-import ActionButton from "../../../components/ActionButton";
-import VerticalBar from "../../../components/VerticalBar";
-import { TopUpIcon } from "../../../components/icons/top-up";
-import { TransferIcon } from "../../../components/icons/transfer";
-import { WithdrawIcon } from "../../../components/icons/withdraw";
-import { useAuthState } from "../../../state/auth/hook";
+import ActionButton from "./ActionButton";
+import VerticalBar from "./VerticalBar";
+import { TopUpIcon } from "./icons/top-up";
+import { TransferIcon } from "./icons/transfer";
+import { WithdrawIcon } from "./icons/withdraw";
+import { useAuthState } from "../state/auth/hook";
+import { useNavigate } from "react-router-dom";
 
 const Formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -13,6 +14,7 @@ const Formatter = new Intl.NumberFormat("en-US", {
 
 const WalletDetails = () => {
   const { wallet } = useAuthState();
+  const navigate = useNavigate();
   const [value, decimal] = useMemo(() => {
     const formattedValue = Formatter.format(parseFloat(wallet?.balance ?? "0"));
 
@@ -39,11 +41,23 @@ const WalletDetails = () => {
         </span>
       </div>
       <div className="flex text-xs justify-between items-center mt-6">
-        <ActionButton text="Top up" icon={<TopUpIcon />} />
+        <ActionButton
+          text="Top up"
+          icon={<TopUpIcon />}
+          onClick={() => navigate("/deposit")}
+        />
         <VerticalBar />
-        <ActionButton text="Withdraw" icon={<WithdrawIcon />} />
+        <ActionButton
+          text="Withdraw"
+          icon={<WithdrawIcon />}
+          onClick={() => navigate("/withdraw")}
+        />
         <VerticalBar />
-        <ActionButton text="Transfer" icon={<TransferIcon />} />
+        <ActionButton
+          text="Transfer"
+          icon={<TransferIcon />}
+          onClick={() => navigate("/transfer")}
+        />
       </div>
     </section>
   );

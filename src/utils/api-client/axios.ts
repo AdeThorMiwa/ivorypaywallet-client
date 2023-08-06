@@ -12,6 +12,17 @@ instance.interceptors.request.use((config) => {
   return config;
 }, Promise.reject);
 
+instance.interceptors.response.use(
+  (c) => c,
+  (error) => {
+    if (error.response.status === 401) {
+      window.localStorage.removeItem("auth.token");
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export default instance;
 
 export const setAuthHeader = (token: string) => {
